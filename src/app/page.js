@@ -22,18 +22,16 @@ export default async function Home() {
 
   return (
     <ScrollArea useScrollAreaId>
-      <FloatingHeader scrollTitle="Onur Şuyalçınkaya" />
+      <FloatingHeader scrollTitle="Valerie Stoica" />
       <div className="content-wrapper">
         <div className="content">
           <PageTitle title="Home" className="lg:hidden" />
           <p>
-            Hi 👋 I'm Onur (meaning "Honour" in English), a software engineer, dj, writer, and minimalist based in
-            Amsterdam, The Netherlands.
+            Hi 👋 I'm Valerie, software developer, math nerd, aspiring gastronomist, and minimalist, based in Waterloo, Canada. A sort of Adrian Monk.
           </p>
           <p>
-            I develop things as a Senior Frontend Software Engineer at Bitvavo. Previously, I worked as a Senior
-            Frontend Software Engineer at heycar, Frontend Software Engineer at Yemeksepeti, Fullstack Software Engineer
-            at Sistas, Mobile Developer at Tanbula, and Specialist at Apple.
+            I develop things when I'm not studying Systems Design Engineering at uWaterloo. I am currently working as a Programmer at the Canadian Food Inspection Agency. Previously, I worked as a 
+            Fullstack Developer at CIVISION INC. Outside of work, I tutor highschool girls in mathematics, creating videos that would remind you of 3Blue1Brown.
           </p>
           <Button asChild variant="link" className="inline px-0">
             <Link href="/writing">

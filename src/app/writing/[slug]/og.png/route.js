@@ -34,7 +34,7 @@ export async function GET(_, { params }) {
     (
       <OpenGraphImage
         title={ogImageTitle || title}
-        description={ogImageSubtitle || 'by Onur Şuyalçınkaya'}
+        description={ogImageSubtitle || 'by Valerie Stoica'}
         url="writing"
       />
     ),

@@ -1,9 +1,9 @@
 {
-  "name": "onur.dev",
+  "name": "valerie.dev",
   "description": "My personal website.",
   "author": {
-    "name": "Onur Şuyalçınkaya",
-    "url": "https://onur.dev"
+    "name": "Valerie Stoica",
+    "url": "https://valerie.dev"
   },
   "scripts": {
     "dev": "next dev",

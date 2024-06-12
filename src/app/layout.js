@@ -42,7 +42,7 @@ export default async function RootLayout({ children }) {
         <Script
           src="https://unpkg.com/@tinybirdco/flock.js"
           data-host="https://api.tinybird.co"
-          data-token={process.env.NEXT_PUBLIC_TINYBIRD_TOKEN}
+          data-token="p.eyJ1IjogIjM4MDViNWUyLTk4ZDAtNGVhMy1hZGE0LTBmNWJlODc4OGY1MyIsICJpZCI6ICIxYWMxMDQ0Yi1lY2YyLTQ3ZjgtOTViMC00ZmUwM2QzNzM1YTIiLCAiaG9zdCI6ICJ1c19lYXN0In0.pan7TgY1ndDuN7YNAcUuLrKIg2JG0SkNqmnu9p4Q2Js"
           strategy="lazyOnload"
         />
       </body>
@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
 }
 
 export const metadata = {
-  metadataBase: new URL('https://onur.dev'),
+  metadataBase: new URL('https://valerie.dev'),
   robots: {
     index: true,
     follow: true
@@ -61,7 +61,7 @@ export const metadata = {
     template: `%s — ${sharedMetadata.title}`
   },
   description: sharedMetadata.description,
-  keywords: ['Onur Şuyalçınkaya', 'Onur Suyalcinkaya', 'onur dev', 'onur.dev'],
+  keywords: ['Valerie Stoica', 'valerie dev', 'valerie.dev'],
   openGraph: {
     title: {
       default: sharedMetadata.title,
@@ -70,17 +70,12 @@ export const metadata = {
     description: sharedMetadata.description,
     alt: sharedMetadata.title,
     type: 'website',
-    url: 'https://onur.dev',
+    url: 'https://valerie.dev',
     siteName: sharedMetadata.title,
     locale: 'en_IE'
   },
   alternates: {
     canonical: '/'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: `@${PROFILES.twitter.username}`,
-    creator: `@${PROFILES.twitter.username}`
   },
   other: {
     pinterest: 'nopin'

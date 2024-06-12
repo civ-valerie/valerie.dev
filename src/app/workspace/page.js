@@ -19,6 +19,7 @@ export default async function Workspace() {
         <div className="content">
           <PageTitle title="Workspace" />
           <figure>
+            {/*
             <Image
               src="/assets/workspace.avif"
               alt="Workspace"
@@ -27,7 +28,7 @@ export default async function Workspace() {
               height={901}
               loading="eager"
               priority
-            />
+            /> */}
             <figcaption className="mt-2 break-all text-center text-xs font-light text-gray-500">Workspace</figcaption>
           </figure>
           <div className="mt-2 overflow-hidden rounded-lg border bg-white md:mt-8">

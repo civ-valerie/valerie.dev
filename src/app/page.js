@@ -27,7 +27,7 @@ export default async function Home() {
         <div className="content">
           <PageTitle title="Home" className="lg:hidden" />
           <p>
-            Hi 👋 I'm Valerie, software developer, math nerd, aspiring gastronomist, and minimalist, based in Waterloo, Canada. A sort of Adrian Monk.
+            Hi 👋 I'm Valerie, software developer, math nerd, aspiring gastronomist, and minimalist, based in Waterloo, Canada. An Adrian Monk.
           </p>
           <p>
             I develop things when I'm not studying Systems Design Engineering at uWaterloo. I am currently working as a Programmer at the Canadian Food Inspection Agency. Previously, I worked as a 

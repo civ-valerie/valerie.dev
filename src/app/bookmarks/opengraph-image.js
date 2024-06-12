@@ -1,5 +1,4 @@
 import { ImageResponse } from 'next/og'
-
 import { OpenGraphImage } from '@/components/og-image'
 import { getPageSeo } from '@/lib/contentful'
 import { getRegularFont, getBoldFont } from '@/lib/fonts'
@@ -13,18 +12,20 @@ export const size = {
 export const contentType = sharedMetadata.ogImage.type
 
 export default async function Image() {
-  const [seoData = {}, regularFontData, boldFontData] = await Promise.all([
+  const [seoData, regularFontData, boldFontData] = await Promise.all([
     getPageSeo('bookmarks'),
     getRegularFont(),
     getBoldFont()
   ])
-  const { seo: { title, description, ogImageTitle, ogImageSubtitle } = {} } = seoData
+  
+  const seo = seoData ? seoData.seo : {};
+  const { title, description, ogImageTitle, ogImageSubtitle } = seo || {};
 
   return new ImageResponse(
     (
       <OpenGraphImage
-        title={ogImageTitle || title}
-        description={ogImageSubtitle || description}
+        title={ogImageTitle || title || 'Default Title'}
+        description={ogImageSubtitle || description || 'Default Description'}
         icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"

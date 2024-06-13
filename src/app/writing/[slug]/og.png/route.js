@@ -17,15 +17,15 @@ export async function generateStaticParams() {
   return allPosts.map((post) => ({ slug: post.slug }))
 }
 
-export async function GET({ params }) {
-  const { slug } = params
+export async function GET(_, { params }) {
   const { isEnabled } = draftMode()
+  const { slug } = params
   const [seoData, regularFontData, boldFontData] = await Promise.all([
     getWritingSeo(slug, isDevelopment ? true : isEnabled),
     getRegularFont(),
     getBoldFont()
   ])
-  if (!seoData) return { status: 404 }
+  if (!seoData) return null
   const {
     seo: { title, ogImageTitle, ogImageSubtitle }
   } = seoData
@@ -57,4 +57,3 @@ export async function GET({ params }) {
     }
   )
 }
-

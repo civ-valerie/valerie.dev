@@ -53,7 +53,7 @@ export default async function WritingSlug({ params }) {
       '@type': 'Person',
       name: 'Valerie Stoica'
     },
-    url: `https://valerie.dev/writing/${slug}`
+    url: `https://valerie.wiki/writing/${slug}`
   }
 
   return (

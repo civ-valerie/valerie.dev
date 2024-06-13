@@ -7,10 +7,10 @@ export async function GET() {
   const allPosts = await getAllPosts()
   const sortedPosts = getSortedPosts(allPosts)
   const date = new Date()
-  const siteURL = 'https://valerie.dev'
+  const siteURL = 'https://valerie.wiki'
   const author = {
     name: 'Valerie Stoica',
-    link: 'https://valerie.dev'
+    link: 'https://valerie.wiki'
   }
 
   const feed = new Feed({

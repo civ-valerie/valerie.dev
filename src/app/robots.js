@@ -4,7 +4,7 @@ export default function robots() {
       userAgent: '*',
       allow: '/'
     },
-    sitemap: 'https://valerie.dev/sitemap.xml',
-    host: 'https://valerie.dev'
+    sitemap: 'https://valerie.wiki/sitemap.xml',
+    host: 'https://valerie.wiki'
   }
 }

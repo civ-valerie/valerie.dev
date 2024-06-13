@@ -1,6 +1,6 @@
-# valerie.dev
+# valerie.wiki
 
-<img src="onurdev.png" alt="valerie.dev — Valerie Stoica" style="border-radius: 12px; border: 1px solid #e5e7eb" />
+<img src="onurdev.png" alt="valerie.wiki — Valerie Stoica" style="border-radius: 12px; border: 1px solid #e5e7eb" />
 
 <br>
 <br>
@@ -26,13 +26,13 @@ and more.
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/suyalcinkaya/valerie.dev.git
-$ cd valerie.dev
+$ git clone https://github.com/suyalcinkaya/valerie.wiki.git
+$ cd valerie.wiki
 $ bun i
 $ bun dev
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/suyalcinkaya/valerie.dev/blob/master/.env.example).
+Create a `.env` file similar to [`.env.example`](https://github.com/suyalcinkaya/valerie.wiki/blob/master/.env.example).
 
 ## Tech Stack
 

@@ -1,7 +1,7 @@
 export const sharedMetadata = {
   title: 'Valerie Stoica',
   description: 'Software Developer, polyglot, aspiring gastronomist, and minimalist, based in Waterloo, Canada',
-  url: 'https://valerie.dev',
+  url: 'https://valerie.wiki',
   ogImage: {
     width: 1200,
     height: 630,

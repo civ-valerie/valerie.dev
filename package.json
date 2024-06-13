@@ -1,9 +1,9 @@
 {
-  "name": "valerie.dev",
+  "name": "valerie.wiki",
   "description": "My personal website.",
   "author": {
     "name": "Valerie Stoica",
-    "url": "https://valerie.dev"
+    "url": "https://valerie.wiki"
   },
   "scripts": {
     "dev": "next dev",

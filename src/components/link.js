@@ -7,7 +7,7 @@ export const Link = ({ href = '#', ...rest }) => {
   if (isExternal) {
     return (
       <a
-        href={href + '?ref=valerie.dev'}
+        href={href + '?ref=valerie.wiki'}
         target="_blank"
         rel="noopener noreferrer"
         className="link break-words after:content-['_↗']"

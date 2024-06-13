@@ -33,7 +33,7 @@ export const OpenGraphImage = ({ title, description, icon, url }) => {
           borderRadius: 9999
         }}
       >
-        {`valerie.dev${url ? `/${url}` : ''}`}
+        {`valerie.wiki${url ? `/${url}` : ''}`}
       </div>
       <span
         style={{

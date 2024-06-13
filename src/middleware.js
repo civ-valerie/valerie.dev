@@ -7,7 +7,7 @@ export function middleware(request, event) {
   async function sendAnalytics() {
     const URL =
       process.env.NODE_ENV === 'production'
-        ? 'https://valerie.dev/api/increment-views'
+        ? 'https://valerie.wiki/api/increment-views'
         : 'http://localhost:3000/api/increment-views'
 
     try {

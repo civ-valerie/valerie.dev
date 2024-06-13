@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
 }
 
 export const metadata = {
-  metadataBase: new URL('https://valerie.dev'),
+  metadataBase: new URL('https://valerie.wiki'),
   robots: {
     index: true,
     follow: true
@@ -61,7 +61,7 @@ export const metadata = {
     template: `%s — ${sharedMetadata.title}`
   },
   description: sharedMetadata.description,
-  keywords: ['Valerie Stoica', 'valerie dev', 'valerie.dev'],
+  keywords: ['Valerie Stoica', 'valerie dev', 'valerie.wiki'],
   openGraph: {
     title: {
       default: sharedMetadata.title,
@@ -70,7 +70,7 @@ export const metadata = {
     description: sharedMetadata.description,
     alt: sharedMetadata.title,
     type: 'website',
-    url: 'https://valerie.dev',
+    url: 'https://valerie.wiki',
     siteName: sharedMetadata.title,
     locale: 'en_IE'
   },

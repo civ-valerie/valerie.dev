@@ -15,8 +15,11 @@ const fetchGraphQL = cache(async (query, preview = isDevelopment) => {
       },
       body: JSON.stringify({ query })
     })
+    console.log("Sent Contentful request.")
 
     if (!res.ok) return null
+    console.log("Successful Contentful request.")
+
     return res.json()
   } catch (error) {
     console.info(error)
@@ -33,7 +36,7 @@ export const getAllPosts = cache(async (preview = isDevelopment) => {
   try {
     const entries = await fetchGraphQL(
       `query {
-        postCollection(preview: ${preview}) {
+        blogPostCollection(preview: ${preview}) {
           items {
             title
             slug
@@ -48,7 +51,7 @@ export const getAllPosts = cache(async (preview = isDevelopment) => {
       preview
     )
 
-    return entries?.data?.postCollection?.items ?? []
+    return entries?.data?. blogPostCollection?.items ?? []
   } catch (error) {
     console.info(error)
     return []
@@ -59,7 +62,7 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
   try {
     const entry = await fetchGraphQL(
       `query {
-        postCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+         blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             title
             slug
@@ -135,7 +138,7 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
       preview
     )
 
-    return entry?.data?.postCollection?.items?.[0] ?? null
+    return entry?.data?.blogPostCollection?.items?.[0] ?? null
   } catch (error) {
     console.info(error)
     return null
@@ -146,7 +149,7 @@ export const getWritingSeo = cache(async (slug, preview = isDevelopment) => {
   try {
     const entry = await fetchGraphQL(
       `query {
-        postCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+         blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             date
             seo {
@@ -166,7 +169,7 @@ export const getWritingSeo = cache(async (slug, preview = isDevelopment) => {
       preview
     )
 
-    return entry?.data?.postCollection?.items?.[0] ?? null
+    return entry?.data?.blogPostCollection?.items?.[0] ?? null
   } catch (error) {
     console.info(error)
     return null
@@ -229,7 +232,7 @@ export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
   try {
     const entries = await fetchGraphQL(
       `query {
-        postCollection(preview: ${preview}) {
+        blogPostCollection(preview: ${preview}) {
           items {
             slug
           }
@@ -238,7 +241,7 @@ export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
       preview
     )
 
-    return entries?.data?.postCollection?.items ?? []
+    return entries?.data?.blogPostCollection?.items ?? []
   } catch (error) {
     console.info(error)
     return []

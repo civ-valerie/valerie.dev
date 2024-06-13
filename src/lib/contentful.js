@@ -206,7 +206,7 @@ export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
   try {
     const entries = await fetchGraphQL(
       `query {
-        postCollection(preview: ${preview}) {
+        blogPostCollection(preview: ${preview}) {
           items {
             slug
           }
@@ -215,7 +215,7 @@ export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
       preview
     )
 
-    return entries?.data?.postCollection?.items.map((item) => ({
+    return entries?.data?.blogPostCollection?.items.map((item) => ({
       slug: item.slug
     })) ?? []
   } catch (error) {
@@ -224,6 +224,32 @@ export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
   }
 })
 
+
+export const getAllPageSlugs = cache(async (preview = isDevelopment) => {
+  try {
+    const entries = await fetchGraphQL(
+      `query {
+        pageCollection(preview: ${preview}) {
+          items {
+            slug
+            hasCustomPage
+            sys {
+              id
+              firstPublishedAt
+              publishedAt
+            }
+          }
+        }
+      }`,
+      preview
+    )
+
+    return entries?.data?.pageCollection?.items ?? []
+  } catch (error) {
+    console.info(error)
+    return []
+  }
+})
 
 
 export const getPage = cache(async (slug, preview = isDevelopment) => {

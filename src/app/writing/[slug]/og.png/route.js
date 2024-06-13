@@ -1,5 +1,5 @@
 import { draftMode } from 'next/headers'
-import { ImageResponse } from 'next/og'
+import { ImageResponse, NextResponse } from 'next/og'
 
 import { OpenGraphImage } from '@/components/og-image'
 import { getWritingSeo, getAllPostSlugs } from '@/lib/contentful'
@@ -25,7 +25,11 @@ export async function GET(_, { params }) {
     getRegularFont(),
     getBoldFont()
   ])
-  if (!seoData) return null
+  
+  if (!seoData) {
+    return NextResponse.json({ error: 'SEO data not found' }, { status: 404 })
+  }
+
   const {
     seo: { title, ogImageTitle, ogImageSubtitle }
   } = seoData

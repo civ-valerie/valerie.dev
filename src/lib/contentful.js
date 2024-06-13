@@ -169,12 +169,18 @@ export const getWritingSeo = cache(async (slug, preview = isDevelopment) => {
       preview
     )
 
-    return entry?.data?.blogPostCollection?.items?.[0] ?? null
+    if (!entry?.data?.blogPostCollection?.items?.[0]) {
+      console.info(`No SEO data found for slug: ${slug}`)
+      return null
+    }
+
+    return entry?.data?.blogPostCollection?.items?.[0]
   } catch (error) {
     console.info(error)
     return null
   }
 })
+
 
 export const getPageSeo = cache(async (slug, preview = isDevelopment) => {
   try {

@@ -201,7 +201,6 @@ export const getAllPageSlugs = cache(async (preview = isDevelopment) => {
 
 export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
   try {
-    console.log("my slug is",slug)
     const entries = await fetchGraphQL(
       `query {
         blogPostCollection(preview: ${preview}) {

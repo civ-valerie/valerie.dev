@@ -175,7 +175,6 @@ export const getPageSeo = cache(async (slug, preview = isDevelopment) => {
 
 export const getAllPageSlugs = cache(async (preview = isDevelopment) => {
   try {
-    console.log("my slug is",slug)
     const entries = await fetchGraphQL(
       `query {
         blogPostCollection(preview: ${preview}) {

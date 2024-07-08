@@ -5,7 +5,12 @@ import { isDevelopment } from '@/lib/utils'
 
 const fetchGraphQL = cache(async (query, preview = isDevelopment) => {
   try {
-    const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, {
+    const cacheBuster = new Date().getTime()
+    console.log('CONTENTFUL_SPACE_ID:', process.env.CONTENTFUL_SPACE_ID);
+console.log('CONTENTFUL_ACCESS_TOKEN:', process.env.CONTENTFUL_ACCESS_TOKEN);
+console.log('CONTENTFUL_PREVIEW_ACCESS_TOKEN:', process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN);
+
+    const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}?cacheBuster=${cacheBuster}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -15,11 +20,8 @@ const fetchGraphQL = cache(async (query, preview = isDevelopment) => {
       },
       body: JSON.stringify({ query })
     })
-    console.log("Sent Contentful request.")
 
     if (!res.ok) return null
-    console.log("Successful Contentful request.")
-
     return res.json()
   } catch (error) {
     console.info(error)
@@ -51,7 +53,7 @@ export const getAllPosts = cache(async (preview = isDevelopment) => {
       preview
     )
 
-    return entries?.data?. blogPostCollection?.items ?? []
+    return entries?.data?.blogPostCollection?.items ?? []
   } catch (error) {
     console.info(error)
     return []
@@ -62,7 +64,7 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
   try {
     const entry = await fetchGraphQL(
       `query {
-         blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+        blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             title
             slug
@@ -94,38 +96,7 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
                     }
                   }
                 }
-                entries {
-                  inline {
-                    sys {
-                      id
-                    }
-                    __typename
-                    ... on ContentEmbed {
-                      title
-                      embedUrl
-                      type
-                    }
-                    ... on CodeBlock {
-                      title
-                      code
-                    }
-                    ... on Tweet {
-                      id
-                    }
-                    ... on Carousel {
-                      imagesCollection {
-                        items {
-                          title
-                          description
-                          url(transform: {
-                            format: AVIF,
-                            quality: 50
-                          })
-                        }
-                      }
-                    }
-                  }
-                }
+               
               }
             }
             sys {
@@ -149,7 +120,7 @@ export const getWritingSeo = cache(async (slug, preview = isDevelopment) => {
   try {
     const entry = await fetchGraphQL(
       `query {
-         blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+        blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             date
             seo {
@@ -169,24 +140,18 @@ export const getWritingSeo = cache(async (slug, preview = isDevelopment) => {
       preview
     )
 
-    if (!entry?.data?.blogPostCollection?.items?.[0]) {
-      console.info(`No SEO data found for slug: ${slug}`)
-      return null
-    }
-
-    return entry?.data?.blogPostCollection?.items?.[0]
+    return entry?.data?.blogPostCollection?.items?.[0] ?? null
   } catch (error) {
     console.info(error)
     return null
   }
 })
 
-
 export const getPageSeo = cache(async (slug, preview = isDevelopment) => {
   try {
     const entry = await fetchGraphQL(
       `query {
-        pageCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+        blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             seo {
               title
@@ -201,41 +166,19 @@ export const getPageSeo = cache(async (slug, preview = isDevelopment) => {
       preview
     )
 
-    return entry?.data?.pageCollection?.items?.[0] ?? null
+    return entry?.data?.blogPostCollection?.items?.[0] ?? null
   } catch (error) {
     console.info(error)
     return null
   }
 })
 
-export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
+export const getAllPageSlugs = cache(async (preview = isDevelopment) => {
   try {
+    console.log("my slug is",slug)
     const entries = await fetchGraphQL(
       `query {
         blogPostCollection(preview: ${preview}) {
-          items {
-            slug
-          }
-        }
-      }`,
-      preview
-    )
-
-    return entries?.data?.blogPostCollection?.items.map((item) => ({
-      slug: item.slug
-    })) ?? []
-  } catch (error) {
-    console.info(error)
-    return []
-  }
-})
-
-
-export const getAllPageSlugs = cache(async (preview = isDevelopment) => {
-  try {
-    const entries = await fetchGraphQL(
-      `query {
-        pageCollection(preview: ${preview}) {
           items {
             slug
             hasCustomPage
@@ -250,19 +193,39 @@ export const getAllPageSlugs = cache(async (preview = isDevelopment) => {
       preview
     )
 
-    return entries?.data?.pageCollection?.items ?? []
+    return entries?.data?.blogPostCollection?.items ?? []
   } catch (error) {
     console.info(error)
     return []
   }
 })
 
+export const getAllPostSlugs = cache(async (preview = isDevelopment) => {
+  try {
+    console.log("my slug is",slug)
+    const entries = await fetchGraphQL(
+      `query {
+        blogPostCollection(preview: ${preview}) {
+          items {
+            slug
+          }
+        }
+      }`,
+      preview
+    )
+
+    return entries?.data?.blogPostCollection?.items ?? []
+  } catch (error) {
+    console.info(error)
+    return []
+  }
+})
 
 export const getPage = cache(async (slug, preview = isDevelopment) => {
   try {
     const entry = await fetchGraphQL(
       `query {
-        pageCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
+        blogPostCollection(where: { slug: "${slug}" }, preview: ${preview}, limit: 1) {
           items {
             title
             slug
@@ -297,7 +260,7 @@ export const getPage = cache(async (slug, preview = isDevelopment) => {
       preview
     )
 
-    return entry?.data?.pageCollection?.items?.[0] ?? null
+    return entry?.data?.blogPostCollection?.items?.[0] ?? null
   } catch (error) {
     console.info(error)
     return null

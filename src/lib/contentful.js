@@ -275,10 +275,7 @@ export const getAllLogbook = cache(async (preview = isDevelopment) => {
             date
             description
             image {
-              url(transform: {
-                format: AVIF,
-                quality: 50
-              })
+              url
               title
               description
               width
@@ -290,6 +287,7 @@ export const getAllLogbook = cache(async (preview = isDevelopment) => {
       preview
     )
 
+    console.log("entries are")
     return entries?.data?.logbookCollection?.items ?? []
   } catch (error) {
     console.info(error)

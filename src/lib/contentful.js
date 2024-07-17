@@ -96,7 +96,13 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
                     }
                   }
                 }
-               
+                entries {
+                  inline {
+                    sys {
+                      id
+                    }
+                  }
+                }
               }
             }
             sys {
@@ -115,6 +121,7 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
     return null
   }
 })
+
 
 export const getWritingSeo = cache(async (slug, preview = isDevelopment) => {
   try {

@@ -27,13 +27,14 @@ export default async function Home() {
       <div className="content-wrapper">
         <div className="content">
           <PageTitle title="Home" className="lg:hidden" />
-          <h2 className="mb-4 mt-8">**WEBSITE IS UNDER CONSTRUCTION**</h2>
           <p>
-            Hi 👋 I'm Valerie, software developer, math nerd, aspiring gastronomist, and minimalist, based in Waterloo, Canada. 
+            Hi 👋 I'm Valerie, software developer, math enthusiast, aspiring etymologist, and minimalist, based in Waterloo, Canada. 
           </p>
           <p>
-            I develop things when I'm not studying Systems Design Engineering at uWaterloo. I am currently working as a Programmer at the Canadian Food Inspection Agency. Previously, I worked as a 
-            Fullstack Developer at CIVISION INC. Outside of work, I tutor highschoolers in mathematics, creating videos that would remind you of 3Blue1Brown.
+            I develop things when I'm not studying Systems Design Engineering at uWaterloo. I am currently working as a Software Developer at the Canadian Food Inspection Agency. Previously, I worked at a 
+            startup called CIVISION INC. Outside of work, I tutor highschoolers in mathematics, creating videos that would remind you of 3Blue1Brown.
+
+            But, I could be kept busy for hours with anything linguistics-related. I am currently studying Classical Arabic and dabbling in Russian.
           </p>
           <Button asChild variant="link" className="inline px-0">
             <Link href="/writing">

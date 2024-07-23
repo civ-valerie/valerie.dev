@@ -64,11 +64,6 @@ export const LINKS = [
     icon: <Wand2Icon size={16} />
   },
   {
-    href: '/workspace',
-    label: 'Workspace',
-    icon: <ArmchairIcon size={16} />
-  },
-  {
     href: '/bookmarks',
     label: 'Bookmarks',
     icon: <BookmarkIcon size={16} />
